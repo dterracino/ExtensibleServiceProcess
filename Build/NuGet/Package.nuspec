@@ -5,7 +5,7 @@
     <version>0.0.0</version>
     <authors>Scott Keith Thomas, Jr.</authors>
     <description>ExtensibleServiceProcess is a library to support an extensible service application.</description>
-    <tags>ExtensibleServiceProcess</tags>
+    <tags>extensible service windows</tags>
     <iconUrl>https://raw.githubusercontent.com/skthomasjr/ExtensibleServiceProcess/master/Build/NuGet/Package.png</iconUrl>
     <licenseUrl>https://raw.githubusercontent.com/skthomasjr/ExtensibleServiceProcess/master/LICENSE.md</licenseUrl>
     <projectUrl>https://github.com/skthomasjr/ExtensibleServiceProcess</projectUrl>
