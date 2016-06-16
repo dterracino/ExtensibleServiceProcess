@@ -15,17 +15,11 @@ namespace ExtensibleServiceProcess.SampleConsole
             CanShutdown = false;
             CanStop = true;
             ExitCode = 0;
-
-            var assemblyTitle = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyTitleAttribute>().Title;
-            var assemblyDescription = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyDescriptionAttribute>().Description;
-
-            ServiceName = assemblyTitle;
-            ServiceDisplayName = assemblyTitle;
-            ServiceDescription = assemblyDescription;
         }
 
         internal static int Main(string[] args)
         {
+            // See AssemblyInfo.cs for example of how to set service name, display name, and description.
             using (var service = new Service())
             {
                 Console.Title = "Sample Console";

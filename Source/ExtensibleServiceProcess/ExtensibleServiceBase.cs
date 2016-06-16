@@ -17,6 +17,8 @@ namespace ExtensibleServiceProcess
     public abstract class ExtensibleServiceBase : ServiceBase
     {
         private readonly TimeSpan serviceControllerTimeout = TimeSpan.FromSeconds(30);
+        private string serviceDescription;
+        private string serviceDisplayName;
 
         /// <summary>
         /// Gets or sets a value indicating whether multiple service starts are allowed.
@@ -36,17 +38,91 @@ namespace ExtensibleServiceProcess
         /// <value><c>true</c> if this instance is a new instance; otherwise, <c>false</c>.</value>
         public bool IsNewInstance => Instance.IsNew($"{ServiceName}.Start");
 
+        public new string ServiceName
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(base.ServiceName))
+                {
+                    return base.ServiceName;
+                }
+
+                var serviceNameFromAttribute = Assembly.GetEntryAssembly().GetCustomAttribute<ServiceNameAttribute>()?.Name;
+                if (!string.IsNullOrWhiteSpace(serviceNameFromAttribute))
+                {
+                    return serviceNameFromAttribute;
+                }
+
+                var assemblyTitleFromAttribute = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyTitleAttribute>()?.Title;
+                if (!string.IsNullOrWhiteSpace(assemblyTitleFromAttribute))
+                {
+                    return assemblyTitleFromAttribute;
+                }
+
+                throw new InvalidOperationException("Unable to determine the service application name.");
+            }
+            set { base.ServiceName = value; }
+        }
+
         /// <summary>
         /// Gets or sets the service description.
         /// </summary>
         /// <value>The service description.</value>
-        protected string ServiceDescription { get; set; }
+        protected string ServiceDescription
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(serviceDescription))
+                {
+                    return serviceDescription;
+                }
+
+                var serviceDescriptionFromAttribute = Assembly.GetEntryAssembly().GetCustomAttribute<ServiceDescriptionAttribute>()?.Description;
+                if (!string.IsNullOrWhiteSpace(serviceDescriptionFromAttribute))
+                {
+                    return serviceDescriptionFromAttribute;
+                }
+
+                var assemblyDescriptionFromAttribute = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyDescriptionAttribute>()?.Description;
+                if (!string.IsNullOrWhiteSpace(assemblyDescriptionFromAttribute))
+                {
+                    return assemblyDescriptionFromAttribute;
+                }
+
+                throw new InvalidOperationException("Unable to determine the service application description.");
+            }
+            set { serviceDescription = value; }
+        }
 
         /// <summary>
         /// Gets or sets the display name of the service.
         /// </summary>
         /// <value>The display name of the service.</value>
-        protected string ServiceDisplayName { get; set; }
+        protected string ServiceDisplayName
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(serviceDescription))
+                {
+                    return serviceDisplayName;
+                }
+
+                var serviceDisplayNameFromAttribute = Assembly.GetEntryAssembly().GetCustomAttribute<ServiceDisplayNameAttribute>()?.DisplayName;
+                if (!string.IsNullOrWhiteSpace(serviceDisplayNameFromAttribute))
+                {
+                    return serviceDisplayNameFromAttribute;
+                }
+
+                var assemblyTitleFromAttribute = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyTitleAttribute>()?.Title;
+                if (!string.IsNullOrWhiteSpace(assemblyTitleFromAttribute))
+                {
+                    return assemblyTitleFromAttribute;
+                }
+
+                throw new InvalidOperationException("Unable to determine the service application display name.");
+            }
+            set { serviceDisplayName = value; }
+        }
 
         /// <summary>
         /// Installs the service.

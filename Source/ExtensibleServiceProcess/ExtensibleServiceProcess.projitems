@@ -13,5 +13,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Instance.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IServiceModule.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServiceDescriptionAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServiceDisplayNameAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServiceNameAttribute.cs" />
   </ItemGroup>
 </Project>
