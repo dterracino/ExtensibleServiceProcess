@@ -14,6 +14,7 @@ namespace ExtensibleServiceProcess
     /// <summary>
     /// Provides a base class for an extensible service that will exist as part of a service application.
     /// </summary>
+    [InheritedExport]
     public abstract class ExtensibleServiceBase : ServiceBase
     {
         private readonly TimeSpan serviceControllerTimeout = TimeSpan.FromSeconds(30);
