@@ -15,9 +15,13 @@ namespace ExtensibleServiceProcess.SampleConsole
             CanShutdown = false;
             CanStop = true;
             ExitCode = 0;
-            ServiceName = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyTitleAttribute>().Title;
-            ServiceDescription = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyDescriptionAttribute>().Description;
-            ServiceDisplayName = "Sample Service";
+
+            var assemblyTitle = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyTitleAttribute>().Title;
+            var assemblyDescription = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyDescriptionAttribute>().Description;
+
+            ServiceName = assemblyTitle;
+            ServiceDisplayName = assemblyTitle;
+            ServiceDescription = assemblyDescription;
         }
 
         internal static int Main(string[] args)
@@ -30,16 +34,19 @@ namespace ExtensibleServiceProcess.SampleConsole
                 if (Environment.UserInteractive)
                 {
                     service.OnStart(args);
+
+                    Console.WriteLine();
+                    Console.WriteLine("This application will run as a console application and a service application.");
+                    Console.WriteLine();
+                    Console.WriteLine("Press any key to exit.");
+                    Console.ReadKey();
+
                     service.OnStop();
                 }
                 else
                 {
                     Run(service);
                 }
-
-                Console.WriteLine();
-                Console.WriteLine("Press any key to exit.");
-                Console.ReadKey();
             }
             return 0;
         }

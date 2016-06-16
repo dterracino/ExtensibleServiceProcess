@@ -4,11 +4,11 @@ using System.Threading;
 
 namespace ExtensibleServiceProcess
 {
-    public static class Instance
+    internal static class Instance
     {
         private static Semaphore instanceSemaphore;
 
-        public static bool IsNew(string semaphoreName)
+        internal static bool IsNew(string semaphoreName)
         {
             bool isNewInstance;
 
