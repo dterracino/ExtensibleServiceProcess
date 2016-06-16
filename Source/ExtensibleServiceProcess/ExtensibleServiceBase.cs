@@ -47,16 +47,16 @@ namespace ExtensibleServiceProcess
                     return base.ServiceName;
                 }
 
-                var serviceNameFromAttribute = Assembly.GetEntryAssembly().GetCustomAttribute<ServiceNameAttribute>()?.Name;
-                if (!string.IsNullOrWhiteSpace(serviceNameFromAttribute))
+                var serviceNameAttribute = Assembly.GetEntryAssembly().GetCustomAttributes(typeof(ServiceNameAttribute), false).FirstOrDefault() as ServiceNameAttribute;
+                if (!string.IsNullOrWhiteSpace(serviceNameAttribute?.Name))
                 {
-                    return serviceNameFromAttribute;
+                    return serviceNameAttribute.Name;
                 }
 
-                var assemblyTitleFromAttribute = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyTitleAttribute>()?.Title;
-                if (!string.IsNullOrWhiteSpace(assemblyTitleFromAttribute))
+                var assemblyTitleAttribute = Assembly.GetEntryAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false).FirstOrDefault() as AssemblyTitleAttribute;
+                if (!string.IsNullOrWhiteSpace(assemblyTitleAttribute?.Title))
                 {
-                    return assemblyTitleFromAttribute;
+                    return assemblyTitleAttribute.Title;
                 }
 
                 throw new InvalidOperationException("Unable to determine the service application name.");
@@ -77,16 +77,16 @@ namespace ExtensibleServiceProcess
                     return serviceDescription;
                 }
 
-                var serviceDescriptionFromAttribute = Assembly.GetEntryAssembly().GetCustomAttribute<ServiceDescriptionAttribute>()?.Description;
-                if (!string.IsNullOrWhiteSpace(serviceDescriptionFromAttribute))
+                var serviceDescriptionAttribute = Assembly.GetEntryAssembly().GetCustomAttributes(typeof(ServiceDescriptionAttribute), false).FirstOrDefault() as ServiceDescriptionAttribute;
+                if (!string.IsNullOrWhiteSpace(serviceDescriptionAttribute?.Description))
                 {
-                    return serviceDescriptionFromAttribute;
+                    return serviceDescriptionAttribute.Description;
                 }
 
-                var assemblyDescriptionFromAttribute = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyDescriptionAttribute>()?.Description;
-                if (!string.IsNullOrWhiteSpace(assemblyDescriptionFromAttribute))
+                var assemblyDescriptionAttribute = Assembly.GetEntryAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false).FirstOrDefault() as AssemblyDescriptionAttribute;
+                if (!string.IsNullOrWhiteSpace(assemblyDescriptionAttribute?.Description))
                 {
-                    return assemblyDescriptionFromAttribute;
+                    return assemblyDescriptionAttribute.Description;
                 }
 
                 throw new InvalidOperationException("Unable to determine the service application description.");
@@ -107,16 +107,16 @@ namespace ExtensibleServiceProcess
                     return serviceDisplayName;
                 }
 
-                var serviceDisplayNameFromAttribute = Assembly.GetEntryAssembly().GetCustomAttribute<ServiceDisplayNameAttribute>()?.DisplayName;
-                if (!string.IsNullOrWhiteSpace(serviceDisplayNameFromAttribute))
+                var serviceDisplayNameAttribute = Assembly.GetEntryAssembly().GetCustomAttributes(typeof(ServiceDisplayNameAttribute), false).FirstOrDefault() as ServiceDisplayNameAttribute;
+                if (!string.IsNullOrWhiteSpace(serviceDisplayNameAttribute?.DisplayName))
                 {
-                    return serviceDisplayNameFromAttribute;
+                    return serviceDisplayNameAttribute.DisplayName;
                 }
 
-                var assemblyTitleFromAttribute = Assembly.GetEntryAssembly().GetCustomAttribute<AssemblyTitleAttribute>()?.Title;
-                if (!string.IsNullOrWhiteSpace(assemblyTitleFromAttribute))
+                var assemblyTitleAttribute = Assembly.GetEntryAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false).FirstOrDefault() as AssemblyTitleAttribute;
+                if (!string.IsNullOrWhiteSpace(assemblyTitleAttribute?.Title))
                 {
-                    return assemblyTitleFromAttribute;
+                    return assemblyTitleAttribute.Title;
                 }
 
                 throw new InvalidOperationException("Unable to determine the service application display name.");

@@ -49,7 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExtensibleServiceProcess.Net461\ExtensibleServiceProcess.Net461.csproj">
-      <Project>{ABAFD8A1-0581-4961-8FFC-FA85B6BA557E}</Project>
+      <Project>{abafd8a1-0581-4961-8ffc-fa85b6ba557e}</Project>
       <Name>ExtensibleServiceProcess.Net461</Name>
     </ProjectReference>
   </ItemGroup>
