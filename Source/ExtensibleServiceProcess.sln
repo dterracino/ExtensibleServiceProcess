@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensibleServiceProcess.Ne
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensibleServiceProcess.Net40", "ExtensibleServiceProcess.Net40\ExtensibleServiceProcess.Net40.csproj", "{EDE1E17D-BCA6-4B1A-A864-8E2FAF1DB695}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensibleServiceProcess.SampleConsole", "ExtensibleServiceProcess.SampleConsole\ExtensibleServiceProcess.SampleConsole.csproj", "{06C6C10A-AB69-4C67-B717-B0BB1C764246}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		ExtensibleServiceProcess\ExtensibleServiceProcess.projitems*{999cf341-07b9-4cd2-b412-00f54ddd1b04}*SharedItemsImports = 13
@@ -35,6 +37,10 @@ Global
 		{EDE1E17D-BCA6-4B1A-A864-8E2FAF1DB695}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDE1E17D-BCA6-4B1A-A864-8E2FAF1DB695}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDE1E17D-BCA6-4B1A-A864-8E2FAF1DB695}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06C6C10A-AB69-4C67-B717-B0BB1C764246}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06C6C10A-AB69-4C67-B717-B0BB1C764246}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06C6C10A-AB69-4C67-B717-B0BB1C764246}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06C6C10A-AB69-4C67-B717-B0BB1C764246}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
