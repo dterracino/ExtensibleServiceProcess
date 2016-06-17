@@ -39,6 +39,11 @@ namespace ExtensibleServiceProcess
         /// <value><c>true</c> if this instance is a new instance; otherwise, <c>false</c>.</value>
         public bool IsNewInstance => Instance.IsNew($"{ServiceName}.Start");
 
+        /// <summary>
+        /// Gets or sets the name of the service.
+        /// </summary>
+        /// <value>The name of the service.</value>
+        /// <exception cref="System.InvalidOperationException">Unable to determine the service application name.</exception>
         public new string ServiceName
         {
             get
@@ -69,6 +74,7 @@ namespace ExtensibleServiceProcess
         /// Gets or sets the service description.
         /// </summary>
         /// <value>The service description.</value>
+        /// <exception cref="System.InvalidOperationException">Unable to determine the service application description.</exception>
         protected string ServiceDescription
         {
             get
@@ -99,6 +105,7 @@ namespace ExtensibleServiceProcess
         /// Gets or sets the display name of the service.
         /// </summary>
         /// <value>The display name of the service.</value>
+        /// <exception cref="System.InvalidOperationException">Unable to determine the service application display name.</exception>
         protected string ServiceDisplayName
         {
             get

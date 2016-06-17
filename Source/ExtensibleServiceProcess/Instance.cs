@@ -4,10 +4,18 @@ using System.Threading;
 
 namespace ExtensibleServiceProcess
 {
+    /// <summary>
+    /// Class Instance.
+    /// </summary>
     internal static class Instance
     {
         private static Semaphore instanceSemaphore;
 
+        /// <summary>
+        /// Determines whether the specified semaphore name is new.
+        /// </summary>
+        /// <param name="semaphoreName">Name of the semaphore.</param>
+        /// <returns><c>true</c> if the specified semaphore name is new; otherwise, <c>false</c>.</returns>
         internal static bool IsNew(string semaphoreName)
         {
             bool isNewInstance;
