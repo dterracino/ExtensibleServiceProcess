@@ -7,7 +7,7 @@
 [![Author](https://img.shields.io/badge/author-Scott%20K.%20Thomas%2C%20Jr.-blue.svg?maxAge=2592000)](https://www.linkedin.com/in/skthomasjr)
 [![Join the chat at https://gitter.im/skthomasjr/ExtensibleServiceProcess](https://badges.gitter.im/skthomasjr/ExtensibleServiceProcess.svg)](https://gitter.im/skthomasjr/ExtensibleServiceProcess?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-ExtensibleServiceProcess is a library to support an extensible service application.
+ExtensibleServiceProcess is a library to support an extensible service application. Deriving from ExtensibleServiceBase creates a new Windows service class that runs as a Windows service. The process context can easily switch from running as a Windows service or console application (or any other .NET application). The following example shows a Windows service/console application:
 
 ```C#
 internal class Service : ExtensibleServiceBase
@@ -43,18 +43,23 @@ internal class Service : ExtensibleServiceBase
   }
 }
 ```
+The service can be installed as a Windows service with the following code:
 ```c#
 service.InstallService();
 ```
+The service can be uninstalled as a Windows service with the following code:
 ```c#
 service.UninstallService();
 ```
+The Windows service can be started with the following code:
 ```c#
 service.StartService();
 ```
+The Windows service can be uninstalled with the following code:
 ```c#
 service.StopService();
 ```
+Attributes can be added to the AsemblyInfo.cs to add Windows service specific metadata required for service control operations.
 ```c#
 [assembly: ServiceName("SampleService")]
 [assembly: ServiceDisplayName("Sample Service")]
