@@ -126,38 +126,6 @@ namespace ExtensibleServiceProcess
         }
 
         /// <summary>
-        /// Installs the service.
-        /// </summary>
-        /// <param name="accountType">Type of the account under which to run this service application.</param>
-        /// <param name="userName">The user account under which the service application will run.</param>
-        /// <param name="password">The password associated with the user account under which the service application will run.</param>
-        protected void InstallService(ServiceAccount accountType = ServiceAccount.NetworkService, string userName = null, string password = null)
-        {
-            if (ServiceController.GetServices().FirstOrDefault(s => s.ServiceName.Equals(ServiceName, StringComparison.OrdinalIgnoreCase)) != null) return;
-
-            using (var processInstaller = new ServiceProcessInstaller())
-            {
-                processInstaller.Account = accountType;
-                processInstaller.Username = userName;
-                processInstaller.Password = password;
-
-                using (var serviceInstaller = new ServiceInstaller { Parent = processInstaller })
-                {
-                    serviceInstaller.StartType = ServiceStartMode.Automatic;
-                    serviceInstaller.ServiceName = ServiceName;
-                    serviceInstaller.DisplayName = ServiceDisplayName;
-                    serviceInstaller.Description = ServiceDescription;
-
-                    string[] commandLine = { $"/assemblypath={Assembly.GetEntryAssembly().Location}" };
-                    serviceInstaller.Context = new InstallContext(null, commandLine);
-
-                    var state = new ListDictionary();
-                    serviceInstaller.Install(state);
-                }
-            }
-        }
-
-        /// <summary>
         /// Called when the service continues.
         /// </summary>
         protected override void OnContinue()
@@ -237,7 +205,7 @@ namespace ExtensibleServiceProcess
         /// <summary>
         /// Starts the service.
         /// </summary>
-        protected void StartService()
+        public void StartService()
         {
             if (ServiceController.GetServices().FirstOrDefault(s => s.ServiceName.Equals(ServiceName, StringComparison.OrdinalIgnoreCase)) == null) return;
 
@@ -254,7 +222,7 @@ namespace ExtensibleServiceProcess
         /// <summary>
         /// Stops the service.
         /// </summary>
-        protected void StopService()
+        public void StopService()
         {
             if (ServiceController.GetServices().FirstOrDefault(s => s.ServiceName.Equals(ServiceName, StringComparison.OrdinalIgnoreCase)) == null) return;
 
@@ -266,9 +234,41 @@ namespace ExtensibleServiceProcess
         }
 
         /// <summary>
+        /// Installs the service.
+        /// </summary>
+        /// <param name="accountType">Type of the account under which to run this service application.</param>
+        /// <param name="userName">The user account under which the service application will run.</param>
+        /// <param name="password">The password associated with the user account under which the service application will run.</param>
+        public void InstallService(ServiceAccount accountType = ServiceAccount.NetworkService, string userName = null, string password = null)
+        {
+            if (ServiceController.GetServices().FirstOrDefault(s => s.ServiceName.Equals(ServiceName, StringComparison.OrdinalIgnoreCase)) != null) return;
+
+            using (var processInstaller = new ServiceProcessInstaller())
+            {
+                processInstaller.Account = accountType;
+                processInstaller.Username = userName;
+                processInstaller.Password = password;
+
+                using (var serviceInstaller = new ServiceInstaller { Parent = processInstaller })
+                {
+                    serviceInstaller.StartType = ServiceStartMode.Automatic;
+                    serviceInstaller.ServiceName = ServiceName;
+                    serviceInstaller.DisplayName = ServiceDisplayName;
+                    serviceInstaller.Description = ServiceDescription;
+
+                    string[] commandLine = { $"/assemblypath={Assembly.GetEntryAssembly().Location}" };
+                    serviceInstaller.Context = new InstallContext(null, commandLine);
+
+                    var state = new ListDictionary();
+                    serviceInstaller.Install(state);
+                }
+            }
+        }
+
+        /// <summary>
         /// Uninstalls the service.
         /// </summary>
-        protected void UninstallService()
+        public void UninstallService()
         {
             if (ServiceController.GetServices().FirstOrDefault(s => s.ServiceName.Equals(ServiceName, StringComparison.OrdinalIgnoreCase)) == null) return;
 
