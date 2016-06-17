@@ -54,8 +54,9 @@ service.UninstallService();
 The Windows service can be started or stopped from the service instance with the following code:
 ```c#
 service.StartService();
-```
-```c#
+
+// or
+
 service.StopService();
 ```
 Attributes can be added to the AsemblyInfo.cs to add Windows service specific metadata required for service control operations.
