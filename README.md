@@ -43,19 +43,17 @@ internal class Service : ExtensibleServiceBase
   }
 }
 ```
-The service can be installed as a Windows service with the following code:
+The Windows service can be installed or uninstalled from the service instance with the following code:
 ```c#
 service.InstallService();
 ```
-The service can be uninstalled as a Windows service with the following code:
 ```c#
 service.UninstallService();
 ```
-The Windows service can be started with the following code:
+The Windows service can be started or stopped from the service instance with the following code:
 ```c#
 service.StartService();
 ```
-The Windows service can be uninstalled with the following code:
 ```c#
 service.StopService();
 ```
