@@ -6,3 +6,57 @@
 [![License](https://img.shields.io/github/license/skthomasjr/ExtensibleServiceProcess.svg?maxAge=2592000)](LICENSE.md)
 [![Author](https://img.shields.io/badge/author-Scott%20K.%20Thomas%2C%20Jr.-blue.svg?maxAge=2592000)](https://www.linkedin.com/in/skthomasjr)
 [![Join the chat at https://gitter.im/skthomasjr/ExtensibleServiceProcess](https://badges.gitter.im/skthomasjr/ExtensibleServiceProcess.svg)](https://gitter.im/skthomasjr/ExtensibleServiceProcess?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+ExtensibleServiceProcess is a library to support an extensible service application.
+
+```C#
+internal class Service : ExtensibleServiceBase
+{
+  private Service()
+  {
+    AllowMultipleServiceStarts = false;
+    AutoLog = true;
+    CanHandlePowerEvent = false;
+    CanHandleSessionChangeEvent = false;
+    CanPauseAndContinue = false;
+    CanShutdown = false;
+    CanStop = true;
+    ExitCode = 0;
+  }
+
+  internal static int Main(string[] args)
+  {
+    using (var service = new Service())
+    {
+      if (Environment.UserInteractive)
+      {
+        service.OnStart(args);
+
+        Console.WriteLine("Press any key to exit.");
+        Console.ReadKey();
+  
+        service.OnStop();
+      }
+      else Run(service);
+    }
+    return 0;
+  }
+}
+```
+```c#
+service.InstallService();
+```
+```c#
+service.UninstallService();
+```
+```c#
+service.StartService();
+```
+```c#
+service.StopService();
+```
+```c#
+[assembly: ServiceName("SampleService")]
+[assembly: ServiceDisplayName("Sample Service")]
+[assembly: ServiceDescription("This is a SampleService.")]
+```
