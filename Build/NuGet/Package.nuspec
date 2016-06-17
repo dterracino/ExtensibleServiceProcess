@@ -10,5 +10,11 @@
     <licenseUrl>https://raw.githubusercontent.com/skthomasjr/ExtensibleServiceProcess/master/LICENSE.md</licenseUrl>
     <projectUrl>https://github.com/skthomasjr/ExtensibleServiceProcess</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System" targetFramework="" />
+      <frameworkAssembly assemblyName="System.ComponentModel.Composition" targetFramework="" />
+      <frameworkAssembly assemblyName="System.Configuration.Install" targetFramework="" />
+      <frameworkAssembly assemblyName="System.ServiceModel" targetFramework="" />
+    </frameworkAssemblies>
   </metadata>
 </package>
