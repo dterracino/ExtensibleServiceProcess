@@ -43,6 +43,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SampleServiceModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
