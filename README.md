@@ -69,6 +69,34 @@ To create an injectable Windows service module implement IServiceModule.
 ```c#
 public class SampleServiceModule : IServiceModule
 {
-  ...
+  public async Task OnContinueAsync()
+  {
+    ...
+  }
+  
+  public async Task OnCustomCommandAsync(int command)
+  {
+    ...
+  }
+  
+  public async Task OnPauseAsync()
+  {
+    ...
+  }
+  
+  public async Task OnShutdownAsync()
+  {
+    ...
+  }
+  
+  public async Task OnStartAsync(string[] args)
+  {
+    ...
+  }
+  
+  public async Task OnStopAsync()
+  {
+    ...
+  }
 }
 ```
