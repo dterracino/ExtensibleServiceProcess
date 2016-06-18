@@ -65,3 +65,10 @@ Attributes can be added to the AsemblyInfo.cs to add Windows service specific me
 [assembly: ServiceDisplayName("Sample Service")]
 [assembly: ServiceDescription("This is a SampleService.")]
 ```
+To create an injectable Windows service module implement IServiceModule.
+```c#
+public class SampleServiceModule : IServiceModule
+{
+  ...
+}
+```
