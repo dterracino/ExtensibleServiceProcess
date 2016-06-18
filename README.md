@@ -100,3 +100,4 @@ public class SampleServiceModule : IServiceModule
   }
 }
 ```
+A more detailed sample project is included with the source.
